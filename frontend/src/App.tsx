@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import moment from 'moment';
 interface User {
   employee_id: number;
   first_name: string;
@@ -30,7 +30,9 @@ const App: React.FC = () => {
     "job",
     "hire date",
   ];
-
+  const formatDate = (date: string) => {
+    return moment(date).format('YYYY-MM-DD');
+  }
   return (
     <>
       <div>
@@ -48,7 +50,7 @@ const App: React.FC = () => {
                 <td>{user.last_name}</td>
                 <td>{user.hourly_pay}</td>
                 <td>{user.job}</td>
-                <td>{user.hire_date}</td>
+                <td>{formatDate(user.hire_date)}</td>
               </tr>
             ))}
           </tbody>
